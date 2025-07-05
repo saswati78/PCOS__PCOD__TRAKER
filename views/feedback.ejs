@@ -1,0 +1,48 @@
+<% layout('/layouts/boilerplate') %>
+
+<div class="container my-5 fade-in">
+  <div class="card shadow-lg border-0 rounded-4 p-4 bg-light">
+    <h1 class="text-center mb-4 text-success fw-bold">We Value Your Feedback 💬</h1>
+
+    <p class="lead text-center">
+      Your thoughts help us improve <strong>SheSync</strong> to better serve your needs. Whether it’s a suggestion, a bug, or something you love, let us know!
+    </p>
+
+    <form action="/submit-feedback" method="POST" class="mt-4">
+      <div class="mb-3">
+        <label for="name" class="form-label fw-medium">Name (optional)</label>
+        <input type="text" id="name" name="name" class="form-control rounded-pill" placeholder="Your name...">
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label fw-medium">Email (optional)</label>
+        <input type="email" id="email" name="email" class="form-control rounded-pill" placeholder="you@example.com">
+      </div>
+
+      <div class="mb-3">
+        <label for="category" class="form-label fw-medium">Feedback Type</label>
+        <select id="category" name="category" class="form-select rounded-pill">
+          <option value="general">General</option>
+          <option value="bug">Bug Report 🐞</option>
+          <option value="suggestion">Feature Request 💡</option>
+          <option value="ui">UI/UX Feedback 🎨</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="message" class="form-label fw-medium">Your Feedback</label>
+        <textarea id="message" name="message" class="form-control rounded-3" rows="5" placeholder="Share your thoughts..."></textarea>
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-success px-5 py-2 rounded-pill fw-semibold shadow-sm">
+          Submit Feedback
+        </button>
+      </div>
+    </form>
+
+    <div class="text-center mt-4 text-muted fst-italic">
+      We read every message and genuinely appreciate your time 💖
+    </div>
+  </div>
+</div>

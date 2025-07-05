@@ -1,0 +1,132 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+  /* Blurred Background */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: url('/image/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    filter: blur(8px) brightness(0.5);
+    z-index: -2;
+  }
+
+  .lifestyle-section {
+    position: relative;
+    z-index: 1;
+    color: #fff;
+  }
+
+  .lifestyle-section h1,
+  .lifestyle-section h2 {
+    font-weight: 800;
+    font-size: 2.3rem;
+    color: #fff;
+  }
+
+  .lifestyle-section p,
+  .lifestyle-section li {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #f9f9f9;
+  }
+
+  .lifestyle-hero {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 1rem;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+  }
+
+  .lifestyle-img {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 1rem;
+  }
+
+  .tip-list li::before {
+    content: "💖";
+    margin-right: 8px;
+    color: #ff69b4;
+    font-weight: bold;
+  }
+
+  .btn-outline-pink {
+    font-weight: bold;
+    color: #3b3a3a;
+    border: 2px solid #fff;
+    border-radius: 2rem;
+  }
+
+  .btn-outline-pink:hover {
+    background-color: rgba(255, 105, 180, 0.2);
+  }
+</style>
+
+<div class="container my-5 fade-in lifestyle-section">
+  <div class="lifestyle-hero p-4 mb-4">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <h1 class="fw-bold mb-3">🏃 Healthy Lifestyle for PCOS/PCOD</h1>
+        <p class="lead">Create a balanced lifestyle to enhance your physical and emotional well-being. Small daily habits make a big difference.</p>
+      </div>
+      <div class="col-md-6">
+        <img src="/image/lifestyle.jpeg" alt="Lifestyle" class="lifestyle-img">
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-5">
+    <h2 class="mb-3">🏋️‍♀️ Physical Activity</h2>
+    <ul class="list-unstyled fs-5 tip-list">
+      <li>Engage in 30 minutes of moderate exercise 5 days a week</li>
+      <li>Mix cardio (walking, cycling) with strength training</li>
+      <li>Try relaxing workouts like yoga and Pilates</li>
+      <li>Stay consistent with movement, even light activity</li>
+      <li>Track your daily steps to stay motivated</li>
+    </ul>
+  </div>
+
+  <div class="mb-5">
+    <h2 class="mb-3">🛌 Sleep & Recovery</h2>
+    <ul class="list-unstyled fs-5 tip-list">
+      <li>Aim for 7–9 hours of quality sleep per night</li>
+      <li>Follow a consistent sleep schedule</li>
+      <li>Limit screen time before bed and create a calming routine</li>
+      <li>Use essential oils or white noise for better relaxation</li>
+      <li>Avoid caffeine in the evening for improved sleep</li>
+    </ul>
+  </div>
+
+  <div class="mb-5">
+    <h2 class="mb-3">🧠 Mental Wellness</h2>
+    <ul class="list-unstyled fs-5 tip-list">
+      <li>Practice mindfulness or meditation daily</li>
+      <li>Journaling and deep breathing help relieve stress</li>
+      <li>Connect with supportive friends or groups</li>
+      <li>Engage in hobbies that bring you joy</li>
+      <li>Set realistic goals and celebrate small wins</li>
+    </ul>
+  </div>
+
+  <div class="mb-5">
+    <h2 class="mb-3">🧴 Self-Care & Motivation</h2>
+    <ul class="list-unstyled fs-5 tip-list">
+      <li>Create a morning routine that energizes you</li>
+      <li>Use positive affirmations to boost confidence</li>
+      <li>Take short breaks during the day to recharge</li>
+      <li>Reward yourself for sticking to healthy routines</li>
+    </ul>
+  </div>
+
+  <div class="text-center mt-4">
+    <a href="/health-tips" class="btn btn-outline-pink rounded-pill px-4">← Back to Health Tips</a>
+  </div>
+</div>

@@ -1,0 +1,122 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+  /* Background Blur */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: url('/image/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    filter: blur(8px) brightness(0.5);
+    z-index: -2;
+  }
+
+  .diet-section {
+    position: relative;
+    z-index: 1;
+    color: #fff;
+  }
+
+  .diet-section h1,
+  .diet-section h2 {
+    font-weight: 800;
+    font-size: 2.3rem;
+    color: #fff;
+  }
+
+  .diet-section p,
+  .diet-section li {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #f9f9f9;
+  }
+
+  .diet-hero {
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: 1rem;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    padding: 2rem;
+  }
+
+  .diet-img {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 1rem;
+  }
+
+  .tips-list li::before {
+    content: "🥗";
+    margin-right: 8px;
+    color: #facc15;
+    font-weight: bold;
+  }
+
+  .btn-outline-warning {
+    font-weight: bold;
+    color: #2f2b2b;
+    border: 2px solid #2f2f2f;
+    border-radius: 2rem;
+  }
+
+  .btn-outline-warning:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+</style>
+
+<div class="container my-5 fade-in diet-section">
+  <div class="diet-hero p-4 mb-4">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <h1 class="fw-bold mb-3">🥗 Healthy Diet for PCOS/PCOD</h1>
+        <p class="lead">Fuel your body with the right nutrients to manage symptoms and boost energy. A balanced diet plays a key role in hormonal health and metabolism.</p>
+      </div>
+      <div class="col-md-6">
+        <img src="/image/diet.jpeg" alt="Diet" class="diet-img">
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-5">
+    <h2 class="mb-3">🥦 Recommended Foods</h2>
+    <ul class="list-unstyled fs-5 tips-list">
+      <li>Leafy greens like spinach, kale, and broccoli</li>
+      <li>Whole grains such as oats, quinoa, and brown rice</li>
+      <li>Lean proteins: chicken, fish, tofu, and legumes</li>
+      <li>Low-glycemic fruits: berries, apples, and pears</li>
+      <li>Healthy fats from avocado, nuts, and olive oil</li>
+    </ul>
+  </div>
+
+  <div class="mb-5">
+    <h2 class="mb-3">🍩 Foods to Limit</h2>
+    <ul class="list-unstyled fs-5 tips-list">
+      <li>Sugary snacks and sweetened beverages</li>
+      <li>Refined carbs: white bread, pasta, pastries</li>
+      <li>Processed and packaged foods with trans fats</li>
+      <li>Excessive caffeine or alcohol intake</li>
+      <li>High-sodium fast food items</li>
+    </ul>
+  </div>
+
+  <div class="mb-5">
+    <h2 class="mb-3">💡 Smart Eating Habits</h2>
+    <ul class="list-unstyled fs-5 tips-list">
+      <li>Eat small, frequent meals throughout the day</li>
+      <li>Pair carbs with protein or healthy fats</li>
+      <li>Stay hydrated with at least 8 glasses of water</li>
+      <li>Practice mindful eating and avoid skipping meals</li>
+      <li>Consider keeping a food journal to track symptoms</li>
+    </ul>
+  </div>
+
+  <div class="text-center mt-4">
+    <a href="/health-tips" class="btn btn-outline-warning rounded-pill px-4">← Back to Health Tips</a>
+  </div>
+</div>

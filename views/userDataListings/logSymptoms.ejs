@@ -1,0 +1,243 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+  /* Blurred Background */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: url('/image/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    filter: blur(8px) brightness(0.5);
+    z-index: -2;
+  }
+
+  .symptom-form-container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .symptom-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    padding: 2.5rem;
+    color: black;
+  }
+
+  .symptom-card h2 {
+    font-weight: 900;
+    font-size: 2.2rem;
+    color: black;
+  }
+
+  .form-label,
+  .form-check-label,
+  .form-select,
+  .form-control {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: black;
+  }
+
+  .form-control,
+  .form-select {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid #fff;
+    color: black;
+    font-size: 1.1rem;
+  }
+
+  .form-control::placeholder {
+    color: black;
+  }
+
+  .form-check-input {
+    background-color: black;
+  }
+
+  .btn-success {
+    font-weight: 800;
+    font-size: 1.2rem;
+    border-radius: 2rem;
+    padding: 0.75rem;
+  }
+</style>
+
+<div class="container my-5 fade-in symptom-form-container">
+  <div class="row justify-content-center">
+    <div class="col-md-10 col-lg-8">
+      <div class="symptom-card">
+        <h2 class="text-center mb-4">📝 Log Your Daily Symptoms</h2>
+
+        <form action="/log-symptoms" method="POST">
+          <div class="mb-3">
+            <label for="date" class="form-label">📅 Date</label>
+            <input type="date" class="form-control" id="date" name="date" required />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">🎂 Age</label>
+            <input type="number" class="form-control" name="age" min="0" required />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">⚖️ Weight (kg)</label>
+            <input type="number" class="form-control" name="weight" step="0.1" required />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">📏 Height (cm)</label>
+            <input type="number" class="form-control" name="height" step="0.1" required />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">📉 BMI</label>
+            <input type="number" class="form-control" name="bmi" step="0.1" required />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">🔁 Cycle Length (in days)</label>
+            <input type="number" class="form-control" name="cycle_length" required />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">🔄 Irregular Periods</label><br/>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="irregular_periods" value="1" id="irregular_yes">
+              <label class="form-check-label" for="irregular_yes">Yes</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="irregular_periods" value="0" id="irregular_no">
+              <label class="form-check-label" for="irregular_no">No</label>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">🌼 Acne</label><br/>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="acne" value="1" id="acne_yes">
+              <label class="form-check-label" for="acne_yes">Yes</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="acne" value="0" id="acne_no">
+              <label class="form-check-label" for="acne_no">No</label>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">💇 Excess Hair Growth</label><br/>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="hair_growth" value="1" id="hair_yes">
+              <label class="form-check-label" for="hair_yes">Yes</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="hair_growth" value="0" id="hair_no">
+              <label class="form-check-label" for="hair_no">No</label>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">🟤 Skin Darkening</label><br/>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="skin_darkening" value="1" id="skin_yes">
+              <label class="form-check-label" for="skin_yes">Yes</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="skin_darkening" value="0" id="skin_no">
+              <label class="form-check-label" for="skin_no">No</label>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">🩸 Blood Pressure</label>
+            <div class="row">
+              <div class="col">
+                <input type="number" class="form-control" name="bp_systolic" placeholder="Systolic (e.g., 120)" required />
+              </div>
+              <div class="col">
+                <input type="number" class="form-control" name="bp_diastolic" placeholder="Diastolic (e.g., 80)" required />
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">🧬 Hemoglobin Count (g/dL)</label>
+            <input type="number" class="form-control" name="hb_count" step="0.1" required />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">🩺 Select Symptoms</label><br />
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" name="symptoms" value="Cramps" id="cramps">
+              <label class="form-check-label" for="cramps">Cramps</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" name="symptoms" value="Bloating" id="bloating">
+              <label class="form-check-label" for="bloating">Bloating</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" name="symptoms" value="Fatigue" id="fatigue">
+              <label class="form-check-label" for="fatigue">Fatigue</label>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">😊 Mood</label>
+            <select class="form-select" name="mood">
+              <option value="">-- Select --</option>
+              <option value="Happy">Happy</option>
+              <option value="Anxious">Anxious</option>
+              <option value="Irritable">Irritable</option>
+              <option value="Sad">Sad</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">🛌 Sleep Hours</label>
+            <input type="number" class="form-control" name="sleep_hours" min="0" max="24" step="0.5" />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">💧 Water Intake (L)</label>
+            <input type="number" class="form-control" name="water_intake_liters" step="0.1" min="0" />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">🏃 Physical Activity</label>
+            <select class="form-select" name="physical_activity">
+              <option value="">-- Select --</option>
+              <option value="Low">Low</option>
+              <option value="Moderate">Moderate</option>
+              <option value="High">High</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">🥗 Diet Quality</label>
+            <select class="form-select" name="diet_quality">
+              <option value="">-- Select --</option>
+              <option value="Poor">Poor</option>
+              <option value="Average">Average</option>
+              <option value="Good">Good</option>
+              <option value="Excellent">Excellent</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">🗒️ Additional Notes</label>
+            <textarea class="form-control" name="notes" rows="3" placeholder="Write anything else you'd like to track..."></textarea>
+          </div>
+
+          <div class="d-grid">
+            <button type="submit" class="btn btn-success btn-lg">Predict</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

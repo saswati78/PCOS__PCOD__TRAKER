@@ -1,0 +1,133 @@
+<% layout('/layouts/boilerplate') %>
+
+<!-- Custom Styling -->
+<style>
+  body {
+    overflow-x: hidden;
+  }
+
+  .profile-fixed {
+    position: fixed;
+    top: 100px;
+    left: 20px;
+    width: 260px;
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    padding: 1.5rem;
+    text-align: center;
+    color: #504b4b;
+    /* text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); */
+  }
+
+  .profile-fixed img {
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+  }
+
+  .dashboard-cards {
+    margin-left: 300px; /* Push content to the right so it doesn't overlap the fixed card */
+  }
+
+  .zigzag-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+     color: #504b4b; 
+    /* text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); */
+  }
+
+  .zigzag-card img.card-img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+
+  .zigzag-card.flex-row-reverse img.card-img {
+    border-radius: 0;
+  }
+
+  .zigzag-card .text-center {
+    padding: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .profile-fixed {
+      position: static;
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+
+    .dashboard-cards {
+      margin-left: 0;
+    }
+  }
+</style>
+
+<!-- Profile Box (Left Corner Fixed) -->
+<div class="profile-fixed">
+  <img src="/image/profile.png" alt="Profile Icon" width="80" class="mb-3">
+  <h4 class="fw-bold">👤 My Profile</h4>
+  <p><strong>Username:</strong> <%= user.username %></p>
+  <p><strong>User ID:</strong> <%= user.user_id %></p>
+  <a href="/logout" class="btn btn-outline-danger mt-2">Logout</a>
+</div>
+
+<!-- Main Dashboard Cards -->
+<div class="container my-5 dashboard-cards">
+  <% const cards = [
+    {
+      title: 'Log Symptoms',
+      text: 'Daily symptom tracking to improve your health insights.',
+      link: '/log-symptoms',
+      button: 'Log Now',
+      img: '/image/symptoms.jpg',
+      reverse: false
+    },
+    {
+      title: 'Prediction',
+      text: 'Check your latest PCOD risk prediction based on symptoms and lifestyle.',
+      link: '/prediction',
+      button: 'View Prediction',
+      img: '/image/prediction.webp',
+      reverse: true
+    },
+    {
+      title: 'Calendar',
+      text: 'View your cycle history, upcoming periods, and notes.',
+      link: '/calendar',
+      button: 'Go to Calendar',
+      img: '/image/calendar.jpeg',
+      reverse: false
+    },
+    {
+      title: 'Health Tips',
+      text: 'Explore yoga, food, and lifestyle tips for PCOD management.',
+      link: '/health-tips',
+      button: 'Explore Tips',
+      img: '/image/tips.jpeg',
+      reverse: true
+    }
+  ]; %>
+
+  <% cards.forEach(card => { %>
+    <div class="mb-4">
+      <div class="row align-items-center zigzag-card <%= card.reverse ? 'flex-row-reverse' : '' %>">
+        <div class="col-md-6 p-0">
+          <img src="<%= card.img %>" alt="<%= card.title %>" class="img-fluid card-img">
+        </div>
+        <div class="col-md-6 text-center py-4 px-3">
+          <h4 class="fw-bold"><%= card.title %></h4>
+          <p><%= card.text %></p>
+          <a href="<%= card.link %>" class="btn btn-primary"><%= card.button %></a>
+        </div>
+      </div>
+    </div>
+  <% }) %>
+</div>

@@ -1,0 +1,209 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+  /* Background Image */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: url('/image/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    filter: blur(8px) brightness(0.6);
+    z-index: -2;
+  }
+
+  /* Container Styling */
+  .pcod-risk-container {
+    position: relative;
+    z-index: 1;
+    margin: 6rem auto 4rem;
+    padding: 3rem 2rem;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
+    border-radius: 1.5rem;
+    color: black;
+    max-width: 900px;
+    box-shadow: 0 4px 40px rgba(0, 0, 0, 0.6);
+    scroll-margin-top: 100px;
+  }
+
+  .pcod-risk-title {
+    font-size: 2.7rem;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  #gaugeChart {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .pcod-risk-badge {
+    font-size: 1.6rem;
+    font-weight: 800;
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    display: inline-block;
+    margin-top: 1.5rem;
+  }
+
+  .badge-high-risk {
+    background-color: #e74c3c;
+    color: black;
+  }
+
+  .badge-medium-risk {
+    background-color: #f39c12;
+    color: black;
+  }
+
+  .badge-low-risk {
+    background-color: #2ecc71;
+    color:black;
+  }
+
+  .pcod-risk-description {
+    margin-top: 2.5rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    line-height: 1.8;
+    text-align: center;
+  }
+
+  .tips-section {
+    margin-top: 3rem;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.07);
+    border-radius: 1rem;
+  }
+
+  .tips-section h4 {
+    font-size: 1.6rem;
+    color: #ffd700;
+    font-weight: 800;
+    margin-bottom: 1.2rem;
+  }
+
+  .tips-section ul {
+    text-align: left;
+    padding-left: 1.4rem;
+  }
+
+  .tips-section li {
+    margin-bottom: 0.7rem;
+    font-weight: 600;
+  }
+
+  .btn-nav {
+    margin-top: 2.5rem;
+    font-size: 1.1rem;
+    padding: 0.7rem 2rem;
+    border-radius: 2rem;
+    font-weight: bold;
+  }
+</style>
+
+<!-- Results Container -->
+<div id="result-section" class="container pcod-risk-container text-center">
+  <h2 class="pcod-risk-title">💡 PCOD Risk Level Analysis</h2>
+
+  <div id="gaugeChart"></div>
+
+  <div>
+    <span class="pcod-risk-badge 
+      <%= prediction === 'High Risk' ? 'badge-high-risk' :
+          prediction === 'Medium Risk' ? 'badge-medium-risk' : 'badge-low-risk' %>">
+      <%= prediction %>
+    </span>
+  </div>
+
+  <div class="pcod-risk-description">
+    Based on your submitted health details, your PCOD risk is calculated.  
+    The percentage value and risk badge reflect how likely symptoms are associated with PCOD.
+  </div>
+
+  <!-- Tips Section -->
+  <div class="tips-section mt-4 text-start">
+    <h4>📌 Personalized Health Tips</h4>
+    <ul>
+      <% if (prediction === 'High Risk') { %>
+        <li>Consult a gynecologist or endocrinologist immediately.</li>
+        <li>Adopt a strict PCOD-friendly diet: avoid sugar, dairy, and processed carbs.</li>
+        <li>Engage in daily exercise like yoga, brisk walking, or strength training.</li>
+        <li>Track your periods and symptoms regularly on this platform.</li>
+      <% } else if (prediction === 'Medium Risk') { %>
+        <li>Focus on improving your diet with more fiber, greens, and whole grains.</li>
+        <li>Reduce screen time and improve your sleep hygiene.</li>
+        <li>Start low-intensity workouts such as stretching and walking.</li>
+        <li>Try stress reduction techniques like journaling or breathing exercises.</li>
+      <% } else { %>
+        <li>Great job! Maintain your current healthy lifestyle habits.</li>
+        <li>Keep tracking your cycle and symptoms consistently.</li>
+        <li>Continue regular exercise and hydration routines.</li>
+      <% } %>
+    </ul>
+  </div>
+
+  <!-- Navigation Buttons -->
+  <div class="text-center">
+    <a href="/dashboard" class="btn btn-outline-light btn-nav">← Back to Dashboard</a>
+  </div>
+</div>
+
+<!-- ApexCharts -->
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+  const prediction = "<%= prediction %>";
+  const gaugeValue = prediction === 'High Risk' ? 85 :
+                     prediction === 'Medium Risk' ? 60 : 25;
+
+  const gaugeColor = prediction === 'High Risk' ? '#e74c3c' :
+                     prediction === 'Medium Risk' ? '#f39c12' : '#2ecc71';
+
+  const options = {
+    chart: {
+      type: 'radialBar',
+      height: 350
+    },
+    series: [gaugeValue],
+    colors: [gaugeColor],
+    plotOptions: {
+      radialBar: {
+        hollow: {
+          size: '60%'
+        },
+        dataLabels: {
+          name: {
+            show: true,
+            fontSize: '20px',
+            color: '#ffffff'
+          },
+          value: {
+            show: true,
+            fontSize: '40px',
+            fontWeight: 'bold',
+            color: '#ffffff'
+          }
+        }
+      }
+    },
+    labels: ['PCOD Risk %']
+  };
+
+  const chart = new ApexCharts(document.querySelector("#gaugeChart"), options);
+  chart.render();
+
+  // Auto scroll to result on load
+  window.onload = function () {
+    const section = document.getElementById('result-section');
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+</script>

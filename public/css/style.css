@@ -1,0 +1,272 @@
+/* -------------------- Reset + Base Styles -------------------- */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  background: url('/image/w.jpeg') no-repeat center center fixed;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+}
+
+/* Overlay over background image for better readability */
+.background-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(2px);
+  z-index: -1;
+}
+
+/* Wrapper for Dashboard Content */
+.dashboard-wrapper {
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* -------------------- Navbar -------------------- */
+.navbar {
+  background-color: #b96ade !important;
+  height: 4rem; /* increased from 4rem to 5rem */
+  display: flex;
+  align-items: center; /* vertically centers contents */
+}
+
+.navbar .navbar-brand,
+.navbar .nav-link {
+  color: white !important;
+  font-size: 1.1rem; /* optional: slightly larger text */
+  line-height: 5rem; /* ensures vertical alignment if not using flex */
+}
+
+.navbar .nav-link:hover {
+  color: #ffe3f7 !important;
+}
+
+
+/* -------------------- Cards & Zigzag Cards -------------------- */
+.card,
+.zigzag-card {
+  background-color: rgba(255, 255, 255, 0.7); /* semi-transparent white */
+  backdrop-filter: blur(6px); /* adds frosted glass effect */
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid #dec5f5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover,
+.zigzag-card:hover {
+  transform: translateY(-5px);
+}
+
+.zigzag-card .card-img {
+  width: 100%;
+  height: auto;
+  max-height: 250px;
+  object-fit: cover;
+}
+
+.zigzag-card .text-center {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(4px);
+  border-radius: 0 0 20px 20px;
+}
+
+
+
+/* -------------------- Buttons -------------------- */
+.btn {
+  border-radius: 20px;
+}
+
+.btn-primary {
+  background-color: #c084fc;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #a855f7;
+}
+
+.btn-purple-outline {
+  border: 1px solid #a855f7;
+  color: #a855f7;
+  background-color: transparent;
+}
+
+.btn-purple-outline:hover {
+  background-color: #a855f7;
+  color: white;
+}
+
+/* -------------------- Signup & Form Styling -------------------- */
+.signup-container {
+  max-width: 500px;
+  margin: 40px auto;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(6px);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(162, 111, 207, 0.2);
+}
+
+.signup-container:hover {
+  transform: scale(1.01);
+  box-shadow: 0 12px 32px rgba(162, 111, 207, 0.25);
+}
+
+.signup-container h2 {
+  font-weight: 700;
+  font-size: 2rem;
+  color: #8645c7;
+  text-align: center;
+}
+
+.signup-container input,
+select,
+textarea {
+  width: 100%;
+  border-radius: 8px;
+  padding: 12px;
+  border: 1px solid #d5b8ff;
+  margin-bottom: 20px;
+}
+
+.signup-container input:focus {
+  box-shadow: 0 0 5px #c084fc;
+  outline: none;
+}
+
+/* -------------------- Calendar -------------------- */
+#calendar {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(4px);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.fc-toolbar-title {
+  font-size: 1.5rem;
+  color: #5d39aa;
+}
+
+/* -------------------- PCOD Risk Badges -------------------- */
+.pcod-risk-badge {
+  padding: 0.6rem 1.5rem;
+  border-radius: 1rem;
+  color: white;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.badge-high-risk {
+  background-color: #e74c3c;
+}
+
+.badge-medium-risk {
+  background-color: #f39c12;
+}
+
+.badge-low-risk {
+  background-color: #2ecc71;
+}
+
+/* -------------------- Footer -------------------- */
+
+
+/* Upper footer section (useful for additional info or links) */
+.upper-footer {
+  background-color: #b96ade;
+  padding: 0.5rem 0; /* reduced padding */
+  color: #fbefff;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.2rem; /* slightly smaller text */
+}
+
+.f-info {
+  background-color: #f2eaff;
+  color: #555;
+  font-size: 0.8rem; /* slightly smaller font */
+  height: 1.5rem; /* reduced height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: 500;
+  border-top: 1px solid #ddd;
+  position: relative;
+  z-index: 10;
+}
+
+
+/* Optional: sticky footer at bottom */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+
+/* -------------------- Utility -------------------- */
+.text-violet {
+  color: #a855f7;
+}
+
+.section-divider {
+  height: 2px;
+  background: linear-gradient(to right, #c084fc, #f47ac2);
+  margin: 60px auto;
+  width: 60%;
+  border-radius: 4px;
+}
+
+/* -------------------- Animation -------------------- */
+.fade-in {
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.container {
+  animation: fadeIn 1.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

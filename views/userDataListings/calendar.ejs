@@ -1,0 +1,165 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container my-5 fade-in">
+  <h1 class="text-center text-violet mb-4">🩸 Period Tracker</h1>
+  <div id="calendar"></div>
+
+  <!-- Form for saving selected dates -->
+  <form method="POST" action="/calendar/save" class="text-center mt-4">
+    <input type="hidden" id="selectedDates" name="selectedDates">
+    <button type="submit" class="btn btn-primary mx-2">Save</button>
+    <button type="button" id="cancelSelection" class="btn btn-outline-danger mx-2">Cancel</button>
+  </form>
+</div>
+
+<!-- FullCalendar Dependencies -->
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+
+<!-- Styles -->
+<style>
+  .fc-theme-standard td,
+  .fc-theme-standard th {
+    border: none !important;
+  }
+
+  .fc .fc-scrollgrid,
+  .fc .fc-scrollgrid-section > * {
+    border: none;
+  }
+
+  .fc .fc-daygrid-day {
+    background: none !important;
+  }
+
+  .fc-daygrid-day-number {
+    width: 32px;
+    height: 32px;
+    margin: auto;
+    border-radius: 50%;
+    border: 2px solid #aaa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s ease;
+  }
+
+  .fc-daygrid-day-number:hover {
+    background-color: #f7eaff;
+    border-color: #a855f7;
+  }
+
+  .period-day .fc-daygrid-day-number {
+    background-color: #f77aaf;
+    color: white;
+    border: none;
+    position: relative;
+  }
+
+  .period-day .fc-daygrid-day-number::after {
+    content: '✔';
+    font-size: 12px;
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+  }
+
+  .fc-toolbar-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.4rem;
+    width: 100%;
+  }
+
+  .fc-col-header-cell-cushion {
+    text-decoration: none !important;
+    font-weight: 600;
+    color: #555;
+  }
+
+  #calendar {
+    padding: 1rem 0.5rem;
+  }
+
+  /* Month switch buttons (prev/next) styling */
+  .fc-button {
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: #a855f7;
+    cursor: pointer;
+    margin: 0 10px;
+  }
+
+  .fc-button:disabled {
+    color: #ccc;
+    cursor: not-allowed;
+  }
+</style>
+
+<!-- FullCalendar Script -->
+<script>
+  document.addEventListener('DOMContentLoaded', async () => {
+    const calendarEl = document.getElementById('calendar');
+    const res = await fetch('/api/calendar-events');
+    const fetchedEvents = await res.json();
+
+    const periodDates = fetchedEvents
+      .filter(e => e.type === "active")
+      .map(e => e.start);
+
+    const calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth',
+      events: [],
+      height: 'auto',
+      headerToolbar: {
+        left: 'prev',
+        center: 'title',
+        right: 'next'
+      },
+      dateClick: function(info) {
+        const clickedDate = info.dateStr;
+        const idx = periodDates.indexOf(clickedDate);
+        if (idx === -1) {
+          periodDates.push(clickedDate);
+        } else {
+          periodDates.splice(idx, 1);
+        }
+        updatePeriodHighlighting();
+      }
+    });
+
+    calendar.render();
+    updatePeriodHighlighting();
+
+    function updatePeriodHighlighting() {
+      document.querySelectorAll(".fc-daygrid-day").forEach(cell => {
+        const date = cell.getAttribute("data-date");
+        const dayNum = cell.querySelector(".fc-daygrid-day-number");
+        if (!dayNum) return;
+        if (periodDates.includes(date)) {
+          cell.classList.add("period-day");
+        } else {
+          cell.classList.remove("period-day");
+        }
+      });
+    }
+
+    // Save form hook
+    const form = document.querySelector('form');
+    form.addEventListener('submit', function () {
+      document.getElementById('selectedDates').value = JSON.stringify(periodDates);
+    });
+
+    // Cancel button clears selection
+    document.getElementById('cancelSelection').addEventListener('click', function () {
+      periodDates.length = 0;
+      updatePeriodHighlighting();
+    });
+  });
+</script>

@@ -1,0 +1,168 @@
+<% layout("/layouts/boilerplate", { hideNavbar: true, hideFooter: true }) %>
+
+<style>
+  
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    color: #fff;
+    position: relative;
+    overflow-x: hidden;
+    flex: 1;
+  }
+
+  main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: url('/image/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    filter: blur(5px) brightness(0.6);
+    z-index: -2;
+  }
+
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: -1;
+  }
+
+  .container {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    flex: 1;
+  }
+
+  /* ... keep your existing styles below */
+
+
+
+  h2 {
+    font-weight: 800;
+    font-size: 3rem;
+    color: #fff;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.85);
+  }
+
+  label,
+  p {
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: #f0f0f0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.85);
+  }
+
+  .form-control {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .btn {
+    font-weight: 600;
+    font-size: 1.5rem;
+    padding: 0.6rem;
+  }
+
+  .login-quote {
+    margin-top: 3rem;
+    text-align: center;
+    color: #eee;
+    font-style: italic;
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+  }
+
+  .quote-mark {
+    font-size: 2rem;
+    color: #ffc107;
+  }
+</style>
+
+<div class="container d-flex flex-column justify-content-center align-items-center">
+  <div class="row justify-content-center w-100">
+    <div class="col-md-6">
+      <h2 class="mb-4 text-center">🔐 Login</h2>
+      <form action="/login" method="POST">
+        <div class="mb-3">
+          <label for="user_id" class="form-label">User ID</label>
+          <input type="text" class="form-control" id="user_id" name="user_id" required>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Login</button>
+        <div class="text-center mt-3">
+          <p>New here? <a href="/signup" class="text-decoration-none fw-bold text-warning">Sign Up</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Quote Section -->
+  <div class="login-quote mt-5">
+    <div class="quote-mark">❝</div>
+    "Every step you take toward understanding your body is a step toward empowerment."
+    <div class="quote-mark">❞</div>
+    <p class="mt-3">SheSync is here to support you, every cycle of the way.</p>
+  </div>
+
+  <!-- Why Use SheSync -->
+  <div class="mt-5 text-center text-light">
+    <h4 class="fw-bold mb-3">Why Log In to SheSync?</h4>
+    <div class="row justify-content-center g-3">
+      <div class="col-md-4">
+        <p>✅ Track your cycle, moods & symptoms easily</p>
+      </div>
+      <div class="col-md-4">
+        <p>✅ Get AI-powered period & ovulation predictions</p>
+      </div>
+      <div class="col-md-4">
+        <p>✅ Receive personalized health alerts & reminders</p>
+      </div>
+      <div class="col-md-4">
+        <p>✅ Connect with a caring support community</p>
+      </div>
+      <div class="col-md-4">
+        <p>✅ See your trends with beautiful visual insights</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Testimonials -->
+  <div class="mt-5 text-light text-center">
+    <h5 class="fw-bold mb-4">💬 What Users Say</h5>
+    <p class="fst-italic">"Logging my symptoms daily helped me see patterns I never noticed before. I finally feel in sync with my body."</p>
+    <p class="fw-semibold">– Priya, 24</p>
+    <p class="fst-italic mt-4">"SheSync has changed how I manage PCOS. It's simple, smart, and makes me feel supported."</p>
+    <p class="fw-semibold">– Aishwarya, 21</p>
+  </div>
+
+  <!-- Privacy Statement -->
+  <div class="mt-5 text-light text-center">
+    <h5 class="fw-bold mb-3">🔒 Your Privacy Matters</h5>
+    <p>We value your trust. All your health data is secure, encrypted, and never shared without your permission.</p>
+    <p>You're in control of your journey — and we’re just here to support you.</p>
+  </div>
+</div>

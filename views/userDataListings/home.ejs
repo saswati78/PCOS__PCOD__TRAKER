@@ -1,0 +1,280 @@
+<% layout('/layouts/boilerplate') %>
+
+<!-- Custom Styles for Better Visibility -->
+
+
+<style>
+  /* Full-page blurred background image */
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    overflow-x: hidden;
+    font-size: 1.1rem; /* base font size slightly increased */
+  }
+
+  /* Blurred background image */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: url('/image/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    filter: blur(5px) brightness(0.6); /* more blur, slightly darker */
+    z-index: -2;
+  }
+
+  /* Optional dark overlay */
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: -1;
+  }
+
+  /* Headings */
+  .highlight-heading,
+  .section-heading {
+    font-weight: 900;
+    font-size: 3rem; /* larger */
+    color: #fff;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.85);
+    margin-bottom: 1rem;
+  }
+
+  /* Sub-headings and steps */
+  .sub-heading,
+  .step-heading {
+    font-weight: 800;
+    font-size: 1.7rem;
+    color: #fff;
+    text-shadow: 1.5px 1.5px 4px rgba(0, 0, 0, 0.85);
+    margin-bottom: 0.5rem;
+  }
+
+  /* Paragraphs */
+  p,
+  .lead {
+    font-size: 1.25rem; /* slightly bigger */
+    font-weight: 600;
+    color: #f0f0f0;
+    line-height: 1.9;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.85);
+  }
+
+  /* Blockquote style */
+  blockquote p {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #fdfdfd;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  }
+
+  /* Container spacing and layout */
+  .container {
+    padding: 2.5rem 1.5rem;
+  }
+
+  /* Button styles */
+  .btn {
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.6rem 1.2rem;
+  }
+
+  /* Optional fade-in animation */
+  .container {
+    animation: fadeIn 1.5s ease-in;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+
+
+
+<!-- Hero Section -->
+<div class="container text-center my-5 animated-section">
+  <h1 class="display-4 highlight-heading">👩‍⚕️ Welcome to SheSync</h1>
+  <p class="lead">
+    Your trusted companion for PCOD/PCOS tracking, period prediction, and wellness insights.
+    <br>
+    Understand your body better, manage symptoms with ease, and take charge of your reproductive health.
+    <br>
+    It's more than an app — it's a daily partner in your wellness journey.
+  </p>
+
+  <div class="mt-4">
+    <a href="/signup" class="btn btn-primary btn-lg me-2">Sign Up</a>
+    <a href="/login" class="btn btn-outline-dark btn-lg">Log In</a>
+  </div>
+</div>
+
+<!-- Why Use SheSync Section -->
+<div class="container my-5 animated-section">
+  <h2 class="text-center mb-5 section-heading">✨ Why Choose SheSync?</h2>
+
+  <div class="row align-items-center mb-5">
+    <div class="col-md-6 text-center">
+      <img src="/image/Guesswork1.jpeg" class="img-fluid" alt="No Guesswork" style="height: 120px;">
+    </div>
+    <div class="col-md-6">
+      <h4 class="sub-heading">No More Guesswork</h4>
+      <p>
+        Say goodbye to surprises. Get accurate cycle tracking & symptom insights tailored to your body.
+        <br>
+        Our intelligent logging system helps you spot patterns easily.
+        <br>
+        Whether you're planning ahead or just staying informed, you’ll always be a step ahead.
+      </p>
+    </div>
+  </div>
+
+  <div class="row align-items-center flex-md-row-reverse mb-5">
+    <div class="col-md-6 text-center">
+      <img src="/image/Personalized.jpeg" class="img-fluid" alt="Personalized Care" style="height: 120px;">
+    </div>
+    <div class="col-md-6">
+      <h4 class="sub-heading">Personalized Predictions</h4>
+      <p>
+        AI-powered tracking for periods, ovulation, and mood, customized just for you.
+        <br>
+        Every woman’s cycle is unique — and we treat it that way.
+        <br>
+        Our smart models adapt to your changes and help you plan better.
+      </p>
+    </div>
+  </div>
+
+  <div class="row align-items-center mb-5">
+    <div class="col-md-6 text-center">
+      <img src="/image/alert2.jpeg" class="img-fluid" alt="Smart Alerts" style="height: 120px;">
+    </div>
+    <div class="col-md-6">
+      <h4 class="sub-heading">Smart Alerts</h4>
+      <p>
+        Get notified when patterns change or symptoms need attention — early and clearly.
+        <br>
+        Never miss important signs or health milestones again.
+        <br>
+        You’ll feel supported, informed, and in control every step of the way.
+      </p>
+    </div>
+  </div>
+
+  <div class="row align-items-center flex-md-row-reverse mb-5">
+    <div class="col-md-6 text-center">
+      <img src="/image/women.jpeg" class="img-fluid" alt="Community Support" style="height: 120px;">
+    </div>
+    <div class="col-md-6">
+      <h4 class="sub-heading">Supportive Community</h4>
+      <p>
+        Join a safe space for sharing experiences, tips, and empathy with people like you.
+        <br>
+        You’re never alone in your journey — thousands of women walk with you.
+        <br>
+        Ask questions, share stories, and find your strength together.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- How It Works Section -->
+<div class="container my-5 animated-section">
+  <h2 class="text-center mb-4 section-heading">💡 How It Works</h2>
+  <div class="row text-center">
+    <div class="col-md-3">
+      <h5 class="step-heading">1. Sign Up</h5>
+      <p>
+        Create your profile in seconds with just a few details.
+        <br>
+        It's free, secure, and totally private.
+        <br>
+        Start your journey to better self-awareness today.
+      </p>
+    </div>
+    <div class="col-md-3">
+      <h5 class="step-heading">2. Log Symptoms</h5>
+      <p>
+        Add your mood, pain, flow, and more daily or weekly.
+        <br>
+        Logging takes less than a minute — but gives a lifetime of insights.
+        <br>
+        Your health data, made simple and visual.
+      </p>
+    </div>
+    <div class="col-md-3">
+      <h5 class="step-heading">3. Get Insights</h5>
+      <p>
+        Receive cycle predictions, health tips, and alerts.
+        <br>
+        Our AI learns your rhythm and adapts continuously.
+        <br>
+        You’ll feel more in sync with your body each day.
+      </p>
+    </div>
+    <div class="col-md-3">
+      <h5 class="step-heading">4. Stay in Sync</h5>
+      <p>
+        Track patterns, manage PCOD, and feel empowered every month.
+        <br>
+        Set reminders, explore trends, and improve your lifestyle choices.
+        <br>
+        We’ll be right beside you, always.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Testimonials Section -->
+<div class="container my-5 animated-section">
+  <h2 class="text-center mb-4 section-heading">💬 What Users Say</h2>
+  <div class="row text-center">
+    <div class="col-md-4 mb-4">
+      <blockquote class="blockquote">
+        <p>"SheSync changed the way I understand my body. No more guessing!"</p>
+        <footer class="blockquote-footer">Aarohi, 22</footer>
+        <p class="fst-italic small">"Logging symptoms feels like self-care now. It helps me prepare and stay calm."</p>
+      </blockquote>
+    </div>
+    <div class="col-md-4 mb-4">
+      <blockquote class="blockquote">
+        <p>"It helps me manage my PCOS symptoms with confidence. So helpful!"</p>
+        <footer class="blockquote-footer">Simran, 25</footer>
+        <p class="fst-italic small">"Even my gynecologist was impressed by how well I knew my cycle!"</p>
+      </blockquote>
+    </div>
+    <div class="col-md-4 mb-4">
+      <blockquote class="blockquote">
+        <p>"I love the alerts and the community space. It’s empowering!"</p>
+        <footer class="blockquote-footer">Riya, 20</footer>
+        <p class="fst-italic small">"It feels good to talk to others going through the same things."</p>
+      </blockquote>
+    </div>
+  </div>
+</div>
+
+<!-- Final CTA Section -->
+<div class="text-center my-5 animated-section">
+  <h2 class="section-heading">🌸 Ready to take control of your PCOD journey?</h2>
+  <p class="lead">Let SheSync support your health, every day of the month. You're not alone — and your journey matters.</p>
+  <a href="/signup" class="btn btn-success btn-lg mt-3">Join SheSync Today</a>
+</div>

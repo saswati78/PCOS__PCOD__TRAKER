@@ -1,0 +1,154 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+  /* Blurred Background Layer */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: url('/image/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    filter: blur(8px) brightness(0.5);
+    z-index: -2;
+  }
+
+  .yoga-section {
+    position: relative;
+    z-index: 1;
+    color: #fff;
+  }
+
+  .yoga-section h1,
+  .yoga-section h2,
+  .yoga-section h5 {
+    font-weight: 800;
+    font-size: 2.3rem;
+  }
+
+  .yoga-section p,
+  .yoga-section li {
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: #f9f9f9;
+  }
+
+  .yoga-hero {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+  }
+
+  .yoga-img {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 1rem;
+  }
+
+  .benefits-list li::before {
+    content: "✔️";
+    margin-right: 8px;
+    color: #ffd700;
+    font-weight: bold;
+  }
+
+  .card {
+    background: rgba(0, 0, 0, 0.45);
+    color: #fff;
+    backdrop-filter: blur(10px);
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .card .card-title {
+    font-weight: 700;
+    font-size: 1.3rem;
+  }
+
+  .card .card-text {
+    font-weight: 500;
+    font-size: 1.1rem;
+  }
+
+  .btn-outline-primary {
+    font-weight: bold;
+    color: #393737;
+    border-color: #fff;
+  }
+
+  .btn-outline-primary:hover {
+    background-color: #ffffff22;
+  }
+</style>
+
+<div class="container my-5 fade-in yoga-section">
+  <div class="yoga-hero p-4 mb-4">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <h1 class="fw-bold mb-3">🧘‍♀️ Yoga for PCOS/PCOD</h1>
+        <p class="lead">Embrace the power of yoga to restore hormonal balance, reduce stress, and support reproductive health. Regular yoga practice can improve both physical and mental well-being, making it an essential part of a PCOS/PCOD management plan.</p>
+      </div>
+      <div class="col-md-6">
+        <img src="/image/yoga.jpeg" alt="Yoga" class="yoga-img">
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-5">
+    <h2 class="mb-3">✨ Benefits of Yoga</h2>
+    <ul class="list-unstyled fs-5 benefits-list">
+      <li>Reduces cortisol levels and supports hormone balance</li>
+      <li>Improves insulin sensitivity</li>
+      <li>Enhances mood and mental clarity</li>
+      <li>Supports weight management and reduces belly fat</li>
+      <li>Regulates menstrual cycles over time</li>
+      <li>Increases energy levels and combats fatigue</li>
+      <li>Improves digestion and reduces bloating</li>
+    </ul>
+  </div>
+
+  <div class="mb-5">
+    <h2 class="mb-3">🧘 Recommended Poses</h2>
+    <div class="row g-4">
+      <% const poses = [
+        { title: "Butterfly Pose", color: "primary", text: "Opens up pelvic region and enhances circulation in reproductive organs." },
+        { title: "Cobra Pose", color: "success", text: "Improves blood flow to the uterus and stimulates abdominal organs." },
+        { title: "Child's Pose", color: "warning", text: "Relieves lower back pain and calms the mind for stress relief." },
+        { title: "Bridge Pose", color: "danger", text: "Strengthens lower back, stimulates abdominal organs and relieves stress." },
+        { title: "Cat-Cow Pose", color: "info", text: "Improves flexibility of the spine and massages abdominal organs to promote hormonal balance." },
+        { title: "Seated Forward Bend", color: "secondary", text: "Stimulates ovaries and uterus, helps reduce anxiety and fatigue." }
+      ]; %>
+
+      <% poses.forEach(pose => { %>
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm border-0 rounded-4">
+            <div class="card-body">
+              <h5 class="card-title text-<%= pose.color %>"><%= pose.title %></h5>
+              <p class="card-text"><%= pose.text %></p>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+
+  <div class="mb-5">
+    <h2 class="mb-3">📌 Tips for Safe Practice</h2>
+    <ul class="list-unstyled fs-5 benefits-list">
+      <li>Practice in a calm, clean, and well-ventilated space</li>
+      <li>Always begin with gentle warm-up stretches</li>
+      <li>Listen to your body and avoid overexertion</li>
+      <li>Combine yoga with healthy eating and hydration</li>
+      <li>End with deep breathing or a short meditation</li>
+    </ul>
+  </div>
+
+  <div class="text-center mt-4">
+    <a href="/health-tips" class="btn btn-outline-primary rounded-pill px-4">← Back to Health Tips</a>
+  </div>
+</div>

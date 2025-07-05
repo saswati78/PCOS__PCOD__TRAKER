@@ -1,0 +1,90 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+  .tip-card {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    height: 250px;
+    margin-bottom: 2rem;
+    color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .tip-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  }
+
+  .tip-card img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: 1;
+    filter: brightness(0.45);
+  }
+
+  .tip-card .content {
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+  }
+
+  .tip-card .content h4 {
+    font-weight: bold;
+  }
+
+  @media (max-width: 768px) {
+    .tip-card {
+      height: auto;
+    }
+
+    .tip-card img {
+      height: 300px;
+    }
+
+    .tip-card .content {
+      padding: 1.5rem;
+    }
+  }
+</style>
+
+<div class="container my-5 fade-in">
+  <h2 class="mb-4 fw-bold">Health Tips</h2>
+
+  <!-- Yoga Tip -->
+  <a href="/tips/yoga" class="text-decoration-none">
+    <div class="tip-card shadow">
+      <img src="/image/yogaFront.jpeg" alt="Yoga Image" />
+      <div class="content">
+        <h4 class="text-info">🧘‍♀️ Yoga</h4>
+        <p>Practice yoga daily to improve flexibility, reduce stress, and enhance your breathing.</p>
+      </div>
+    </div>
+  </a>
+
+  <!-- Diet Tip -->
+  <a href="/tips/diet" class="text-decoration-none">
+    <div class="tip-card shadow">
+      <img src="/image/dietFront.jpeg" alt="Diet Image" />
+      <div class="content">
+        <h4 class="text-success">🥗 Diet</h4>
+        <p>Focus on a balanced diet rich in fruits, vegetables, lean proteins, and healthy fats.</p>
+      </div>
+    </div>
+  </a>
+
+  <!-- Lifestyle Tip -->
+  <a href="/tips/lifestyle" class="text-decoration-none">
+    <div class="tip-card shadow">
+      <img src="/image/lifestyleFront.jpeg" alt="Lifestyle Image" />
+      <div class="content">
+        <h4 class="text-warning">🏃 Lifestyle</h4>
+        <p>Stay active, maintain a regular sleep schedule, and find time for mindfulness or meditation.</p>
+      </div>
+    </div>
+  </a>
+</div>
